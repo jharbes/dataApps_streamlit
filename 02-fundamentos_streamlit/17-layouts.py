@@ -191,6 +191,8 @@ container.write("This is inside too")
 # https://docs.streamlit.io/library/api-reference/layout/st.empty
 st.header('Empty')
 
+# uma boa opção para elementos que devem aparecer e desaparecer com o tempo, ficando sempre no mesmo container
+
 # Insert a single-element container.
 
 # Inserts a container into your app that can be used to hold a single element. This allows you to, for example, remove elements at any point, or replace several elements at once (using a child multi-element container).
@@ -209,16 +211,20 @@ st.write('Replacing several elements, then clearing them:')
 
 placeholder=st.empty()
 
+time.sleep(3)
 # Replace the placeholder with some text:
 placeholder.text("Hello")
 
+time.sleep(3)
 # Replace the text with a chart:
 placeholder.line_chart({"data": [1, 5, 2, 6]})
 
+time.sleep(3)
 # Replace the chart with several elements:
 with placeholder.container():
     st.write("This is one element")
     st.write("This is another")
 
+time.sleep(3)
 # Clear all those elements:
 placeholder.empty()
