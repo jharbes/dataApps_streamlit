@@ -40,3 +40,37 @@ st.download_button(
     file_name='large_df.csv',
     mime='text/csv',
 )
+
+
+
+
+'-------------------------------------------------------------'
+
+# https://docs.streamlit.io/library/api-reference/widgets/st.checkbox
+st.header('Checkbox')
+
+agree = st.checkbox('I agree with terms')
+
+if agree:
+    st.write('Thanks for accepting the terms!')
+else:
+    st.write('Click on the box to accept the terms')
+
+
+
+
+'-------------------------------------------------------------'
+
+# https://docs.streamlit.io/library/api-reference/widgets/st.radio
+st.header('Radio')
+
+genre = st.radio(
+    "What\'s your favorite movie genre",
+    ('Comedy', 'Drama', 'Documentary'))
+
+if genre == 'Comedy':
+    st.write('You selected Comedy.')
+elif genre=='Drama':
+    st.write("You selected Drama.")
+else:
+    st.write('You selected Documentary')
