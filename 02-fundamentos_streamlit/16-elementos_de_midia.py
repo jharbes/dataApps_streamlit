@@ -41,3 +41,17 @@ t = np.linspace(0, seconds, seconds * sample_rate, False)
 note_la = np.sin(frequency_la * t * 2 * np.pi)
 
 st.audio(note_la, sample_rate=sample_rate)
+
+
+
+'-------------------------------------------------------------'
+
+
+
+# https://docs.streamlit.io/library/api-reference/media/st.video
+st.header('Video')
+
+video_file = open('../media/sample-5s.mp4', 'rb')
+video_bytes = video_file.read()
+
+st.video(video_bytes)
