@@ -136,9 +136,10 @@ with st.expander("See explanation"):
 
 # Or you can just call methods directly in the returned objects:
 
-st.write('Expander sem usar o with')
 
 st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
+
+st.write('Expander sem usar o with')
 
 expander = st.expander("See explanation")
 expander.write("""
@@ -147,3 +148,77 @@ expander.write("""
     be random.
 """)
 expander.image("https://static.streamlit.io/examples/dice.jpg")
+
+
+
+'-------------------------------------------------------------'
+
+
+
+# https://docs.streamlit.io/library/api-reference/layout/st.container
+st.header('Container')
+
+st.markdown('Inserting elements using **"with"** notation:')
+
+with st.container():
+   st.write("This is inside the container")
+
+   # You can call any Streamlit command, including custom components:
+   st.bar_chart(np.random.randn(50, 3))
+
+st.write("This is outside the container")
+
+
+'-------------------------------------------------------------'
+
+
+# observe que o output estara ordenado de maneira diferente do input feito aqui no codigo
+st.markdown('Inserting elements out of order:')
+
+container = st.container()
+container.write("This is inside the container")
+st.write("This is outside the container")
+
+# Now insert some more in the container
+container.write("This is inside too")
+
+
+
+'-------------------------------------------------------------'
+
+
+
+# https://docs.streamlit.io/library/api-reference/layout/st.empty
+st.header('Empty')
+
+# Insert a single-element container.
+
+# Inserts a container into your app that can be used to hold a single element. This allows you to, for example, remove elements at any point, or replace several elements at once (using a child multi-element container).
+
+with st.empty():
+    for seconds in range(5):
+        st.write(f"⏳ {seconds} seconds have passed")
+        time.sleep(1)
+    st.write("✔️ 1 minute over!")
+
+
+'-------------------------------------------------------------'
+
+
+st.write('Replacing several elements, then clearing them:')
+
+placeholder=st.empty()
+
+# Replace the placeholder with some text:
+placeholder.text("Hello")
+
+# Replace the text with a chart:
+placeholder.line_chart({"data": [1, 5, 2, 6]})
+
+# Replace the chart with several elements:
+with placeholder.container():
+    st.write("This is one element")
+    st.write("This is another")
+
+# Clear all those elements:
+placeholder.empty()
